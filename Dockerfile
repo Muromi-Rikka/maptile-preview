@@ -6,14 +6,6 @@ RUN corepack enable
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
 
-# Production dependencies stage
-FROM base AS prod-deps
-WORKDIR /app
-COPY package.json pnpm-lock.yaml ./
-# Use cache mount for pnpm store and install only production dependencies
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
-    pnpm install --prod --frozen-lockfile
-
 # Build stage
 FROM base AS build
 WORKDIR /app
@@ -27,9 +19,6 @@ RUN pnpm build
 
 # Final production stage with nginx
 FROM nginx:1.29.1-alpine AS runtime
-
-# Copy production dependencies from prod-deps stage
-COPY --from=prod-deps /app/node_modules /usr/share/nginx/html/node_modules
 
 # Copy built application from build stage
 COPY --from=build /app/dist /usr/share/nginx/html
