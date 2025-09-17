@@ -1,0 +1,8 @@
+node_modules
+dist
+.idea
+.DS_Store
+*.log
+*.vsix
+.eslintcache
+public/_sources.json
