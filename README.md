@@ -6,8 +6,6 @@ A modern, responsive web application for previewing and managing map tile source
 
 ## ✨ Features
 
-## ✨ Features
-
 - **Multi-coordinate System Support**: WGS84 and GCJ02 coordinate systems
 - **Rich Map Sources**: Integration with multiple map providers (MapTiler, Tianditu, Autonavi)
 - **Interactive Map View**: Real-time map preview with tile source switching
@@ -21,13 +19,14 @@ A modern, responsive web application for previewing and managing map tile source
 
 ### Prerequisites
 
-- Node.js 18+ 
+- Node.js 18+
 - pnpm 10.16.1+ (package manager)
 - Docker & Docker Compose (optional, for containerized deployment)
 
 ### Local Development
 
 1. **Clone and Install**
+
    ```bash
    git clone <repository-url>
    cd maptile-preview
@@ -38,7 +37,6 @@ A modern, responsive web application for previewing and managing map tile source
    ```bash
    pnpm dev
    ```
-   
 3. **Open Application**
    - Visit http://localhost:5000
    - Map preview will load with default GCJ02 source
@@ -114,6 +112,7 @@ Edit `public/sources.json` to add or modify map sources:
 ### Build Configuration
 
 Modify `rsbuild.config.ts` for build customization:
+
 - Port configuration
 - PostCSS plugins
 - Tailwind CSS integration
@@ -122,23 +121,27 @@ Modify `rsbuild.config.ts` for build customization:
 ### Environment Variables
 
 When using Docker:
+
 - `NGINX_HOST`: Hostname (default: localhost)
 - `NGINX_PORT`: Port number (default: 80)
 
 ## 🎯 Key Components
 
 ### MapView Component
+
 - Renders interactive map using react-map-gl and maplibre-gl
 - Supports dynamic tile source switching
 - Responsive map container with proper error handling
 
 ### Source Management
+
 - Sources grouped by coordinate system (WGS84, GCJ02)
 - Real-time URL template display
 - One-click copy functionality
 - Organized card-based layout
 
 ### UI/UX Features
+
 - Dark theme optimized for map viewing
 - Smooth animations and transitions
 - Responsive grid layout
@@ -170,6 +173,7 @@ pnpm lint --fix
 ### Git Hooks
 
 Pre-configured with Husky and lint-staged:
+
 - Automatic linting on commit
 - Code formatting checks
 - Pre-commit quality checks
@@ -192,6 +196,7 @@ GET /tiles?source={source-name}&x={x}&y={y}&z={z}
 ### Supported Sources
 
 **WGS84 Coordinate System:**
+
 - MapTiler Satellite
 - Satellite imagery
 - Dark theme maps
@@ -199,6 +204,7 @@ GET /tiles?source={source-name}&x={x}&y={y}&z={z}
 - Tianditu label overlays
 
 **GCJ02 Coordinate System:**
+
 - Autonavi (Gaode) vector maps
 - Autonavi satellite imagery
 - Autonavi road networks
@@ -223,15 +229,18 @@ This project is licensed under the MIT License - see the [LICENSE](./LICENSE) fi
 ### Common Issues
 
 **Build Failures:**
+
 - Ensure pnpm version matches `packageManager` field
 - Clear node_modules and reinstall: `rm -rf node_modules && pnpm install`
 
 **Map Not Loading:**
+
 - Check network connectivity to tile server
 - Verify sources.json configuration
 - Check browser console for CORS errors
 
 **Docker Issues:**
+
 - Ensure Docker daemon is running
 - Check port availability (default: 80)
 - Review container logs: `docker logs maptile-preview`
@@ -246,6 +255,7 @@ This project is licensed under the MIT License - see the [LICENSE](./LICENSE) fi
 ## 📞 Support
 
 For issues and questions:
+
 - Check existing issues in the repository
 - Review troubleshooting section above
 - Create a new issue with detailed information
