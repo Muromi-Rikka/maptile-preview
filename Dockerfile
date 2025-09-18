@@ -9,7 +9,7 @@ ENV PATH="$PNPM_HOME:$PATH"
 # Build stage
 FROM base AS build
 WORKDIR /app
-COPY package.json pnpm-lock.yaml ./
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 # Install all dependencies (including devDependencies) with cache mount
 RUN --mount=type=cache,id=pnpm,target=/pnpm/store \
     pnpm install --frozen-lockfile
