@@ -36,8 +36,8 @@
     "access": "public"
   },
   "engines": {
-    "node": ">=18.0.0",
-    "pnpm": ">=10.16.1"
+    "node": ">=18.20.8",
+    "pnpm": ">=10.17.0"
   },
   "scripts": {
     "dev": "rsbuild dev --open",
