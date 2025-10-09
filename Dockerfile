@@ -1,5 +1,5 @@
 # Base stage with Node.js
-FROM node:24.9.0-slim AS base
+FROM node:24.10.0-slim AS base
 # Enable Corepack for automatic pnpm installation
 RUN corepack enable
 # Set pnpm store location
