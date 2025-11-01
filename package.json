@@ -55,7 +55,7 @@
     "clsx": "^2.1.1",
     "destr": "^2.0.5",
     "maplibre-gl": "^5.10.0",
-    "ofetch": "^1.5.0",
+    "ofetch": "^1.5.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "react-map-gl": "^8.1.0"
