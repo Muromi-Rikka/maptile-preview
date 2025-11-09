@@ -50,8 +50,8 @@
     "docker:run": "docker run -p 80:80 --name maptile-preview maptile-preview"
   },
   "dependencies": {
-    "@mantine/core": "^8.3.6",
-    "@mantine/hooks": "^8.3.6",
+    "@mantine/core": "^8.3.7",
+    "@mantine/hooks": "^8.3.7",
     "clsx": "^2.1.1",
     "destr": "^2.0.5",
     "maplibre-gl": "^5.12.0",
