@@ -56,8 +56,8 @@
     "destr": "^2.0.5",
     "maplibre-gl": "^5.16.0",
     "ofetch": "^1.5.1",
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
     "react-map-gl": "^8.1.0"
   },
   "browserslist": [
@@ -75,7 +75,7 @@
     "@rsbuild/plugin-react": "^1.4.3",
     "@tailwindcss/postcss": "^4.1.18",
     "@types/postcss-import": "^14.0.3",
-    "@types/react": "^19.2.9",
+    "@types/react": "^19.2.10",
     "@types/react-dom": "^19.2.3",
     "autoprefixer": "^10.4.23",
     "eslint": "^9.39.2",
