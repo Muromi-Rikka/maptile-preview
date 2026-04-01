@@ -67,7 +67,7 @@
     "not ie 11"
   ],
   "devDependencies": {
-    "@antfu/eslint-config": "^7.7.3",
+    "@antfu/eslint-config": "^8.0.0",
     "@eslint-react/eslint-plugin": "^3.0.0",
     "@iconify/json": "^2.2.458",
     "@iconify/tailwind": "^1.2.0",
