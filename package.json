@@ -58,7 +58,7 @@
     "ofetch": "^1.5.1",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
-    "react-map-gl": "^8.1.0"
+    "react-map-gl": "^8.1.1"
   },
   "browserslist": [
     "> 1%",
