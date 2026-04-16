@@ -18,7 +18,7 @@ COPY . .
 RUN pnpm build
 
 # Final production stage with nginx
-FROM nginx:1.29.8-alpine AS runtime
+FROM nginx:1.30.0-alpine AS runtime
 
 # Copy built application from build stage
 COPY --from=build /app/dist /usr/share/nginx/html
