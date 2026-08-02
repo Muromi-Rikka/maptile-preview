@@ -1,6 +1,6 @@
 @import "tailwind-preset-mantine";
 
-@plugin "./iconify.ts"
+@plugin "./iconify.ts";
 
 /* Design System Tokens - Dark Mode (OLED) */
 :root {
