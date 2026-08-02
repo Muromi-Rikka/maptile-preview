@@ -1,5 +1,4 @@
 import type { FC } from "react";
-import { clsx } from "clsx";
 import Map, { Layer, NavigationControl, Source } from "react-map-gl/maplibre";
 import "maplibre-gl/dist/maplibre-gl.css";
 
@@ -10,8 +9,18 @@ interface MapViewProps {
 
 export const MapView: FC<MapViewProps> = ({ className, sourceUrl }) => {
   return (
-    <div className={clsx("flex-1 overflow-hidden p-2 bg-dark-500", className)}>
-      <div className="w-full h-full overflow-hidden rounded-sm">
+    <div
+      className={`flex-1 overflow-hidden p-2 ${className || ""}`}
+      style={{
+        backgroundColor: "var(--color-muted)",
+      }}
+    >
+      <div
+        className="w-full h-full overflow-hidden"
+        style={{
+          borderRadius: "var(--mantine-radius-sm)",
+        }}
+      >
         <Map
           initialViewState={{
             longitude: 121.4737,
@@ -22,7 +31,13 @@ export const MapView: FC<MapViewProps> = ({ className, sourceUrl }) => {
           mapStyle="https://demotiles.maplibre.org/style.json"
           mapLib={import("maplibre-gl")}
         >
-          <NavigationControl position="top-right" />
+          <NavigationControl
+            position="top-right"
+            style={{
+              // Ensure navigation controls have visible focus states
+              "--maplibregl-ctrl-icon-color": "var(--color-foreground)",
+            } as React.CSSProperties}
+          />
           {sourceUrl && (
             <Source
               id="base-tiles"

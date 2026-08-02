@@ -39,37 +39,69 @@ function App() {
   };
 
   return (
-    <Box className="w-screen h-screen bg-gray-900 p-3 pr-1 flex flex-row justify-start items-stretch gap-3">
+    <Box
+      className="w-screen h-screen p-3 pr-1 flex flex-row justify-start items-stretch gap-3"
+      style={{
+        backgroundColor: "var(--color-background)",
+        fontFamily: "var(--font-sans)",
+      }}
+    >
       <Box className="flex-1 flex flex-col gap-3">
         {currentSourceUrl && (
           <Card
-            bg="dark.8"
-            c="gray.3"
             p="sm"
             radius="md"
+            style={{
+              backgroundColor: "var(--color-muted)",
+              border: "1px solid var(--color-border)",
+            }}
           >
             <Group justify="space-between" mb={4}>
-              <Text size="xs" fw={500} c="gray.1">当前底图URL:</Text>
+              <Text
+                size="xs"
+                fw={500}
+                style={{ color: "var(--color-foreground)" }}
+              >
+                当前底图URL:
+              </Text>
               <Button
                 size="xs"
                 variant="subtle"
-                color="blue"
                 onClick={() => clipboard.copy(currentSourceUrl)}
-                leftSection={<span className={clsx(clipboard.copied ? "icon-[mdi--check] text-green-400" : "icon-[mdi--content-copy] text-blue-400")}></span>}
+                leftSection={(
+                  <span
+                    className={clsx(
+                      clipboard.copied
+                        ? "icon-[mdi--check]"
+                        : "icon-[mdi--content-copy]",
+                    )}
+                    style={{
+                      color: clipboard.copied
+                        ? "var(--color-accent)"
+                        : "var(--color-foreground)",
+                    }}
+                  />
+                )}
+                style={{
+                  color: clipboard.copied
+                    ? "var(--color-accent)"
+                    : "var(--color-foreground)",
+                }}
               >
                 {clipboard.copied ? "已复制!" : "复制"}
               </Button>
             </Group>
             <Box
-              bg="dark.9"
               p={6}
               style={{
                 borderRadius: "var(--mantine-radius-sm)",
-                fontFamily: "monospace",
+                fontFamily: "var(--font-mono)",
                 fontSize: "11px",
                 wordBreak: "break-all",
                 maxHeight: "60px",
                 overflowY: "auto",
+                backgroundColor: "var(--color-primary)",
+                color: "var(--color-foreground)",
               }}
             >
               {currentSourceUrl}
@@ -77,10 +109,14 @@ function App() {
           </Card>
         )}
         <Card
-          bg="dark.7"
           p={0}
           radius="md"
           className="flex-1"
+          style={{
+            backgroundColor: "var(--color-secondary)",
+            border: "1px solid var(--color-border)",
+            overflow: "hidden",
+          }}
         >
           <MapView sourceUrl={currentSourceUrl} />
         </Card>
@@ -92,11 +128,23 @@ function App() {
             {Object.entries(groupedSources).map(([title, items], index) => (
               <Card
                 key={title}
-                bg={index % 2 === 0 ? "dark.6" : "dark.5"}
                 p="sm"
                 radius="md"
+                style={{
+                  backgroundColor: index % 2 === 0
+                    ? "var(--color-muted)"
+                    : "var(--color-secondary)",
+                  border: "1px solid var(--color-border)",
+                }}
               >
-                <Title order={4} c="gray.1" mb="sm" size="h4">{title}</Title>
+                <Title
+                  order={4}
+                  size="h4"
+                  mb="sm"
+                  style={{ color: "var(--color-foreground)" }}
+                >
+                  {title}
+                </Title>
                 <SourceList
                   sources={items}
                   onSourceSelect={handleSourceSelect}
