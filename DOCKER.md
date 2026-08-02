@@ -12,6 +12,7 @@ This guide explains how to deploy the maptile-preview application using Docker a
 ### Using Docker Compose (Recommended)
 
 1. Build and run the container:
+
    ```bash
    docker-compose up --build
    ```
@@ -22,6 +23,7 @@ This guide explains how to deploy the maptile-preview application using Docker a
 ### Using Docker directly
 
 1. Build the image:
+
    ```bash
    docker build -t maptile-preview .
    ```
@@ -47,12 +49,14 @@ For custom nginx configuration, modify `nginx.conf` before building the image.
 ### Health Checks
 
 The container includes health checks that monitor the application status:
+
 - Health endpoint: http://localhost:8080/health
 - Checks every 30 seconds with 3 retries
 
 ### Performance Optimizations
 
 The nginx configuration includes:
+
 - Gzip compression for static assets
 - Long-term caching for CSS/JS files (1 year)
 - Short-term caching for JSON files (1 hour)
@@ -71,6 +75,7 @@ The nginx configuration includes:
 ### Logs
 
 View container logs:
+
 ```bash
 docker logs maptile-preview
 ```
@@ -78,11 +83,13 @@ docker logs maptile-preview
 ### Health Status
 
 Check container health:
+
 ```bash
 docker inspect --format='{{.State.Health.Status}}' maptile-preview
 ```
 
 Or test directly:
+
 ```bash
 curl http://localhost/health
 ```
@@ -98,6 +105,7 @@ curl http://localhost/health
 ### Debug Mode
 
 For debugging, run with verbose logging:
+
 ```bash
 docker-compose up --build --verbose
 ```
@@ -116,6 +124,7 @@ docker-compose up --build --verbose
 ### Backup
 
 Backup your custom nginx configuration:
+
 ```bash
 cp nginx.conf nginx.conf.backup
 ```
@@ -125,6 +134,7 @@ cp nginx.conf nginx.conf.backup
 ### Local Development with Docker
 
 For development with hot reload (not recommended for this static build):
+
 ```bash
 # Use a separate docker-compose.dev.yml for development
 ```

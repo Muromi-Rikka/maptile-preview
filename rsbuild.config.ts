@@ -7,7 +7,7 @@ import postcssSimpleVars from "postcss-simple-vars";
 
 export default defineConfig({
   server: {
-    port: 5000,
+    port: 5555,
   },
   tools: {
     postcss: {

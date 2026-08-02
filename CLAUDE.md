@@ -17,6 +17,7 @@ Map tile source previewer with React 19 + Mantine 8 + MapLibre GL.
 **Data flow**: `public/sources.json` → `App.tsx` fetches via `useFetch` → groups by `title` → `SourceList` renders items → `MapView` displays selected tile source as raster layer.
 
 **Key components**:
+
 - `MapView.tsx` — MapLibre GL map via react-map-gl, renders raster tile Source/Layer
 - `SourceList.tsx` — Renders grouped source items
 - `SourceItem.tsx` — Individual source selector button
@@ -41,6 +42,7 @@ Map tile source previewer with React 19 + Mantine 8 + MapLibre GL.
 ## Coordinate Systems
 
 The app supports two coordinate systems:
+
 - **WGS84**: Standard GPS coordinates (MapTiler, Tianditu)
 - **GCJ02**: China-specific offset coordinates (Autonavi/Gaode)
 
