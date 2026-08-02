@@ -1,6 +1,6 @@
 import { defineConfig } from "@rsbuild/core";
 import { pluginReact } from "@rsbuild/plugin-react";
-import { pluginTailwindcss } from "@rsbuild/plugin-tailwindcss";
+import tailwindcss from "@tailwindcss/postcss";
 
 export default defineConfig({
   resolve: {
@@ -11,8 +11,12 @@ export default defineConfig({
   server: {
     port: 5555,
   },
-  plugins: [
-    pluginReact(),
-    pluginTailwindcss(),
-  ],
+  tools: {
+    postcss: {
+      postcssOptions: {
+        plugins: [tailwindcss],
+      },
+    },
+  },
+  plugins: [pluginReact()],
 });
