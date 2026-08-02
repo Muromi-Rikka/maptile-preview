@@ -6,6 +6,11 @@ import postcssPresetMantine from "postcss-preset-mantine";
 import postcssSimpleVars from "postcss-simple-vars";
 
 export default defineConfig({
+  resolve: {
+    alias: {
+      "@": "./src",
+    },
+  },
   server: {
     port: 5555,
   },
