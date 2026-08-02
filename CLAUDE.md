@@ -14,7 +14,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Map tile source previewer with React 19 + shadcn/ui + MapLibre GL.
 
-**Data flow**: `public/sources.json` → `App.tsx` fetches via `useFetch` → groups by `title` → `SourceList` renders items → `MapView` displays selected tile source as raster layer.
+**Data flow**: `public/sources.json` → `App.tsx` fetches via `useQuery` (TanStack Query) → groups by `title` → `SourceList` renders items → `MapView` displays selected tile source as raster layer.
 
 **Key components**:
 
