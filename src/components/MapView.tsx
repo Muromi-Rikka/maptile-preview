@@ -12,13 +12,34 @@ export const MapView: FC<MapViewProps> = ({ className, sourceUrl }) => {
     <div
       className={`flex-1 overflow-hidden p-2 ${className || ""}`}
       style={{
-        backgroundColor: "var(--color-muted)",
+        backgroundColor: "var(--color-ocean)",
+        position: "relative",
       }}
     >
+      {/* Subtle coordinate grid overlay */}
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundImage: `
+            linear-gradient(var(--grid-line-color) var(--grid-line-width), transparent var(--grid-line-width)),
+            linear-gradient(90deg, var(--grid-line-color) var(--grid-line-width), transparent var(--grid-line-width))
+          `,
+          backgroundSize: "50px 50px",
+          opacity: 0.3,
+          pointerEvents: "none",
+          zIndex: 1,
+        }}
+      />
       <div
         className="w-full h-full overflow-hidden"
         style={{
           borderRadius: "var(--mantine-radius-sm)",
+          position: "relative",
+          zIndex: 2,
         }}
       >
         <Map
@@ -34,8 +55,9 @@ export const MapView: FC<MapViewProps> = ({ className, sourceUrl }) => {
           <NavigationControl
             position="top-right"
             style={{
-              // Ensure navigation controls have visible focus states
-              "--maplibregl-ctrl-icon-color": "var(--color-foreground)",
+              "--maplibregl-ctrl-icon-color": "var(--color-annotation)",
+              "--maplibregl-ctrl-bg": "var(--color-land)",
+              "--maplibregl-ctrl-border": "var(--color-grid)",
             } as React.CSSProperties}
           />
           {sourceUrl && (

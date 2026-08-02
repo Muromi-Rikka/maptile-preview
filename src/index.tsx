@@ -10,7 +10,7 @@ if (rootEl) {
   const theme = mergeMantineTheme(
     DEFAULT_THEME,
     createTheme({
-      fontFamily: "var(--font-sans)",
+      fontFamily: "var(--font-body)",
       fontFamilyMonospace: "var(--font-mono)",
       colors: {
         dark: [
@@ -35,7 +35,7 @@ if (rootEl) {
         },
         Card: {
           defaultProps: {
-            radius: "md",
+            radius: "sm",
           },
         },
       },

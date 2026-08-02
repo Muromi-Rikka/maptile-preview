@@ -27,19 +27,20 @@ export const SourceItem: FC<SourceItemProps> = ({
     <Box
       onClick={onClick}
       style={{
-        backgroundColor: "var(--color-muted)",
+        backgroundColor: "var(--color-ocean)",
         cursor: "pointer",
         borderRadius: "var(--mantine-radius-sm)",
         transition: "all var(--transition-fast)",
-        border: "1px solid transparent",
+        border: "1px solid var(--color-grid)",
+        overflow: "hidden",
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.backgroundColor = "var(--color-secondary)";
-        e.currentTarget.style.borderColor = "var(--color-border)";
+        e.currentTarget.style.borderColor = "var(--color-coordinate)";
+        e.currentTarget.style.backgroundColor = "var(--color-land)";
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.backgroundColor = "var(--color-muted)";
-        e.currentTarget.style.borderColor = "transparent";
+        e.currentTarget.style.borderColor = "var(--color-grid)";
+        e.currentTarget.style.backgroundColor = "var(--color-ocean)";
       }}
     >
       <Image
@@ -56,7 +57,10 @@ export const SourceItem: FC<SourceItemProps> = ({
           fw={500}
           truncate
           lh={1.2}
-          style={{ color: "var(--color-foreground)" }}
+          style={{
+            color: "var(--color-annotation)",
+            fontFamily: "var(--font-body)",
+          }}
         >
           {name}
         </Text>

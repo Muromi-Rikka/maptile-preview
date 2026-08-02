@@ -2,22 +2,22 @@
 
 @plugin "./iconify.ts";
 
-/* Design System Tokens - Dark Mode (OLED) */
+/* Design System Tokens - Cartographic Aesthetic */
 :root {
-  /* Color Palette */
-  --color-primary: #0F172A;
-  --color-on-primary: #FFFFFF;
-  --color-secondary: #1E293B;
-  --color-accent: #22C55E;
-  --color-background: #020617;
-  --color-foreground: #F8FAFC;
-  --color-muted: #1A1E2F;
-  --color-border: #334155;
-  --color-destructive: #EF4444;
+  /* Color Palette - Inspired by maps and geography */
+  --color-ocean: #0A1628;        /* Deep sea / night sky - main background */
+  --color-land: #1A2332;         /* Continental land - secondary background */
+  --color-contour: #8B7355;      /* Topographic contours - borders/dividers */
+  --color-coordinate: #4A9B8E;   /* GPS coordinate markers - accent */
+  --color-annotation: #E8F0F2;   /* Map annotations - primary text */
+  --color-meridian: #D4A574;     /* Longitude/latitude lines - secondary accent */
+  --color-grid: #2A3A4A;         /* Grid lines - subtle */
+  --color-marker: #FF6B6B;       /* Location markers - danger/alerts */
 
-  /* Font Stack - System fonts (no Google Fonts) */
-  --font-sans: "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
-  --font-mono: "SF Mono", "Cascadia Code", "Fira Code", "JetBrains Mono", "Consolas", "Liberation Mono", "Menlo", "Courier New", monospace;
+  /* Font Stack - Technical precision */
+  --font-display: "JetBrains Mono", "SF Mono", "Cascadia Code", "Fira Code", monospace;
+  --font-body: "Inter", "SF Pro Display", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "SF Mono", "Cascadia Code", "Fira Code", "Consolas", monospace;
 
   /* Spacing Scale (8dp rhythm) */
   --space-1: 4px;
@@ -32,7 +32,7 @@
   --space-16: 64px;
 
   /* Focus Ring */
-  --focus-ring-color: #22C55E;
+  --focus-ring-color: var(--color-coordinate);
   --focus-ring-width: 2px;
   --focus-ring-offset: 2px;
 
@@ -40,13 +40,18 @@
   --transition-fast: 150ms ease;
   --transition-normal: 200ms ease;
   --transition-slow: 300ms ease;
+
+  /* Map-specific tokens */
+  --grid-line-width: 1px;
+  --grid-line-color: var(--color-grid);
+  --coordinate-font-size: 10px;
 }
 
 /* Global Styles */
 body {
-  font-family: var(--font-sans);
-  background-color: var(--color-background);
-  color: var(--color-foreground);
+  font-family: var(--font-body);
+  background-color: var(--color-ocean);
+  color: var(--color-annotation);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -106,25 +111,68 @@ input:disabled {
 
 /* Selection */
 ::selection {
-  background-color: var(--color-accent);
-  color: var(--color-on-primary);
+  background-color: var(--color-coordinate);
+  color: var(--color-ocean);
 }
 
-/* Scrollbar styling */
+/* Scrollbar styling - Map-like */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-muted);
+  background: var(--color-ocean);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-border);
-  border-radius: 4px;
+  background: var(--color-contour);
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-foreground);
+  background: var(--color-meridian);
+}
+
+/* Coordinate grid overlay effect */
+.coordinate-grid {
+  background-image:
+    linear-gradient(var(--grid-line-color) var(--grid-line-width), transparent var(--grid-line-width)),
+    linear-gradient(90deg, var(--grid-line-color) var(--grid-line-width), transparent var(--grid-line-width));
+  background-size: 50px 50px;
+}
+
+/* Coordinate label style */
+.coordinate-label {
+  font-family: var(--font-display);
+  font-size: var(--coordinate-font-size);
+  color: var(--color-coordinate);
+  letter-spacing: 0.05em;
+}
+
+/* Contour line effect */
+.contour-border {
+  border-image: repeating-linear-gradient(
+    90deg,
+    var(--color-contour) 0px,
+    var(--color-contour) 4px,
+    transparent 4px,
+    transparent 8px
+  ) 1;
+}
+
+/* Map marker pulse animation */
+@keyframes marker-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.1);
+  }
+}
+
+.marker-pulse {
+  animation: marker-pulse 2s ease-in-out infinite;
 }
