@@ -25,23 +25,9 @@ export const SourceItem: FC<SourceItemProps> = ({
 
   return (
     <Box
+      bg="dark.7"
       onClick={onClick}
-      style={{
-        backgroundColor: "var(--color-ocean)",
-        cursor: "pointer",
-        borderRadius: "var(--mantine-radius-sm)",
-        transition: "all var(--transition-fast)",
-        border: "1px solid var(--color-grid)",
-        overflow: "hidden",
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.borderColor = "var(--color-coordinate)";
-        e.currentTarget.style.backgroundColor = "var(--color-land)";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.borderColor = "var(--color-grid)";
-        e.currentTarget.style.backgroundColor = "var(--color-ocean)";
-      }}
+      className="hover:bg-dark-6 hover:shadow-sm transition-all duration-150 cursor-pointer rounded-sm"
     >
       <Image
         src={getPreviewUrl()}
@@ -53,14 +39,11 @@ export const SourceItem: FC<SourceItemProps> = ({
       <Box p={6}>
         <Text
           size="xs"
+          c="gray.2"
           ta="center"
           fw={500}
           truncate
           lh={1.2}
-          style={{
-            color: "var(--color-annotation)",
-            fontFamily: "var(--font-body)",
-          }}
         >
           {name}
         </Text>

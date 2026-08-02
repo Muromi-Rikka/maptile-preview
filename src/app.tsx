@@ -39,203 +39,64 @@ function App() {
   };
 
   return (
-    <Box
-      className="w-screen h-screen p-3 pr-1 flex flex-row justify-start items-stretch gap-3"
-      style={{
-        backgroundColor: "var(--color-ocean)",
-        fontFamily: "var(--font-body)",
-      }}
-    >
+    <Box className="w-screen h-screen bg-gray-900 p-3 pr-1 flex flex-row justify-start items-stretch gap-3">
       <Box className="flex-1 flex flex-col gap-3">
-        {/* Coordinate Header Bar */}
-        <Card
-          p="xs"
-          radius="sm"
-          style={{
-            backgroundColor: "var(--color-land)",
-            border: "1px solid var(--color-grid)",
-          }}
-        >
-          <Group justify="space-between">
-            <Group gap="xs">
-              <Text
-                size="xs"
-                style={{
-                  fontFamily: "var(--font-display)",
-                  color: "var(--color-coordinate)",
-                  letterSpacing: "0.05em",
-                }}
-              >
-                坐标系
-              </Text>
-              <Box
-                style={{
-                  width: 8,
-                  height: 8,
-                  borderRadius: "50%",
-                  backgroundColor: "var(--color-coordinate)",
-                  animation: "marker-pulse 2s ease-in-out infinite",
-                }}
-              />
-            </Group>
-            <Text
-              size="xs"
-              style={{
-                fontFamily: "var(--font-display)",
-                color: "var(--color-meridian)",
-              }}
-            >
-              121.4737°E, 31.2304°N
-            </Text>
-          </Group>
-        </Card>
-
-        {/* Source URL Display */}
         {currentSourceUrl && (
           <Card
-            p="xs"
-            radius="sm"
-            style={{
-              backgroundColor: "var(--color-land)",
-              border: "1px solid var(--color-contour)",
-              borderTop: "2px solid var(--color-coordinate)",
-            }}
+            bg="dark.8"
+            c="gray.3"
+            p="sm"
+            radius="md"
           >
             <Group justify="space-between" mb={4}>
-              <Text
-                size="xs"
-                fw={500}
-                style={{ color: "var(--color-annotation)" }}
-              >
-                当前底图URL:
-              </Text>
+              <Text size="xs" fw={500} c="gray.1">当前底图URL:</Text>
               <Button
                 size="xs"
                 variant="subtle"
+                color="blue"
                 onClick={() => clipboard.copy(currentSourceUrl)}
-                leftSection={(
-                  <span
-                    className={clsx(
-                      clipboard.copied
-                        ? "icon-[mdi--check]"
-                        : "icon-[mdi--content-copy]",
-                    )}
-                    style={{
-                      color: clipboard.copied
-                        ? "var(--color-coordinate)"
-                        : "var(--color-annotation)",
-                    }}
-                  />
-                )}
-                style={{
-                  color: clipboard.copied
-                    ? "var(--color-coordinate)"
-                    : "var(--color-annotation)",
-                }}
+                leftSection={<span className={clsx(clipboard.copied ? "icon-[mdi--check] text-green-400" : "icon-[mdi--content-copy] text-blue-400")}></span>}
               >
                 {clipboard.copied ? "已复制!" : "复制"}
               </Button>
             </Group>
             <Box
+              bg="dark.9"
               p={6}
               style={{
                 borderRadius: "var(--mantine-radius-sm)",
-                fontFamily: "var(--font-mono)",
+                fontFamily: "monospace",
                 fontSize: "11px",
                 wordBreak: "break-all",
                 maxHeight: "60px",
                 overflowY: "auto",
-                backgroundColor: "var(--color-ocean)",
-                color: "var(--color-annotation)",
-                border: "1px dashed var(--color-grid)",
               }}
             >
               {currentSourceUrl}
             </Box>
           </Card>
         )}
-
-        {/* Map Container with Coordinate Grid */}
         <Card
+          bg="dark.7"
           p={0}
-          radius="sm"
+          radius="md"
           className="flex-1"
-          style={{
-            backgroundColor: "var(--color-land)",
-            border: "1px solid var(--color-grid)",
-            overflow: "hidden",
-            position: "relative",
-          }}
         >
-          {/* Coordinate markers on edges */}
-          <Box
-            style={{
-              position: "absolute",
-              top: 8,
-              left: 8,
-              fontFamily: "var(--font-display)",
-              fontSize: "10px",
-              color: "var(--color-coordinate)",
-              zIndex: 10,
-              backgroundColor: "rgba(10, 22, 40, 0.8)",
-              padding: "2px 6px",
-              borderRadius: "2px",
-            }}
-          >
-            121.5°E
-          </Box>
-          <Box
-            style={{
-              position: "absolute",
-              bottom: 8,
-              right: 8,
-              fontFamily: "var(--font-display)",
-              fontSize: "10px",
-              color: "var(--color-coordinate)",
-              zIndex: 10,
-              backgroundColor: "rgba(10, 22, 40, 0.8)",
-              padding: "2px 6px",
-              borderRadius: "2px",
-            }}
-          >
-            31.2°N
-          </Box>
           <MapView sourceUrl={currentSourceUrl} />
         </Card>
       </Box>
 
-      {/* Source List Panel */}
       <Box className="flex flex-col w-72">
         <ScrollArea style={{ height: "100%" }}>
           <Box className="flex flex-col gap-3 pr-2">
             {Object.entries(groupedSources).map(([title, items], index) => (
               <Card
                 key={title}
+                bg={index % 2 === 0 ? "dark.6" : "dark.5"}
                 p="sm"
-                radius="sm"
-                style={{
-                  backgroundColor: "var(--color-land)",
-                  border: "1px solid var(--color-grid)",
-                  borderLeft: index === 0
-                    ? "3px solid var(--color-coordinate)"
-                    : index === 1
-                      ? "3px solid var(--color-meridian)"
-                      : "3px solid var(--color-contour)",
-                }}
+                radius="md"
               >
-                <Title
-                  order={4}
-                  size="h4"
-                  mb="sm"
-                  style={{
-                    color: "var(--color-annotation)",
-                    fontFamily: "var(--font-display)",
-                    fontSize: "14px",
-                    letterSpacing: "0.02em",
-                  }}
-                >
-                  {title}
-                </Title>
+                <Title order={4} c="gray.1" mb="sm" size="h4">{title}</Title>
                 <SourceList
                   sources={items}
                   onSourceSelect={handleSourceSelect}
