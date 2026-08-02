@@ -1,6 +1,8 @@
 import type { FC } from "react";
-import { clsx } from "clsx";
+
 import Map, { Layer, NavigationControl, Source } from "react-map-gl/maplibre";
+import { cn } from "../lib/utils";
+
 import "maplibre-gl/dist/maplibre-gl.css";
 
 interface MapViewProps {
@@ -10,7 +12,7 @@ interface MapViewProps {
 
 export const MapView: FC<MapViewProps> = ({ className, sourceUrl }) => {
   return (
-    <div className={clsx("flex-1 overflow-hidden p-2 bg-dark-500", className)}>
+    <div className={cn("flex-1 overflow-hidden p-2 bg-dark-500", className)}>
       <div className="w-full h-full overflow-hidden rounded-sm">
         <Map
           initialViewState={{

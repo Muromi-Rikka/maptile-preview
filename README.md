@@ -38,7 +38,7 @@ A modern, responsive web application for previewing and managing map tile source
    pnpm dev
    ```
 3. **Open Application**
-   - Visit http://localhost:5000
+   - Visit http://localhost:5555
    - Map preview will load with default GCJ02 source
 
 ### Build for Production
