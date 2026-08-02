@@ -10,6 +10,7 @@ import "./globals.css";
 function App() {
   const { data: sources } = useFetch<SourceItemData[]>("/sources.json");
   const [currentSourceUrl, setCurrentSourceUrl] = useState<string>("");
+  const [selectedSourceName, setSelectedSourceName] = useState<string>("");
   const clipboard = useClipboard();
 
   // Group sources by title
@@ -29,13 +30,17 @@ function App() {
   useEffect(() => {
     if (sources && sources.length > 0 && !currentSourceUrl) {
       const gcj02Source = sources.find(s => s.title === "GCJ02");
+      const defaultSource = gcj02Source || sources[0];
       // eslint-disable-next-line react-hooks-extra/no-direct-set-state-in-use-effect
-      setCurrentSourceUrl(gcj02Source?.urlTemplate || sources[0].urlTemplate);
+      setCurrentSourceUrl(defaultSource.urlTemplate);
+      // eslint-disable-next-line react-hooks-extra/no-direct-set-state-in-use-effect
+      setSelectedSourceName(defaultSource.name);
     }
   }, [currentSourceUrl, sources]);
 
   const handleSourceSelect = (source: SourceItemData) => {
     setCurrentSourceUrl(source.urlTemplate);
+    setSelectedSourceName(source.name);
   };
 
   return (
@@ -49,13 +54,13 @@ function App() {
             radius="md"
           >
             <Group justify="space-between" mb={4}>
-              <Text size="xs" fw={500} c="gray.1">当前底图URL:</Text>
+              <Text size="xs" fw={500} c="teal.4">当前底图URL:</Text>
               <Button
                 size="xs"
                 variant="subtle"
-                color="blue"
+                color="teal"
                 onClick={() => clipboard.copy(currentSourceUrl)}
-                leftSection={<span className={clsx(clipboard.copied ? "icon-[mdi--check] text-green-400" : "icon-[mdi--content-copy] text-blue-400")}></span>}
+                leftSection={<span className={clsx(clipboard.copied ? "icon-[mdi--check] text-green-400 animate-copy-bounce" : "icon-[mdi--content-copy] text-teal-400")}></span>}
               >
                 {clipboard.copied ? "已复制!" : "复制"}
               </Button>
@@ -65,11 +70,12 @@ function App() {
               p={6}
               style={{
                 borderRadius: "var(--mantine-radius-sm)",
-                fontFamily: "monospace",
+                fontFamily: "var(--font-data)",
                 fontSize: "11px",
                 wordBreak: "break-all",
                 maxHeight: "60px",
                 overflowY: "auto",
+                color: "var(--mantine-color-teal-4)",
               }}
             >
               {currentSourceUrl}
@@ -99,6 +105,7 @@ function App() {
                 <Title order={4} c="gray.1" mb="sm" size="h4">{title}</Title>
                 <SourceList
                   sources={items}
+                  selectedName={selectedSourceName}
                   onSourceSelect={handleSourceSelect}
                 />
               </Card>

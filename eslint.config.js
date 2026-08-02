@@ -15,5 +15,8 @@ export default antfu(
     formatters: {
       markdown: "prettier",
     },
+    rules: {
+      "pnpm/yaml-enforce-settings": "off",
+    },
   },
 );

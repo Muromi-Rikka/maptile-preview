@@ -5,6 +5,7 @@ interface SourceItemProps {
   name: string;
   urlTemplate: string;
   previewUrl?: string;
+  isSelected?: boolean;
   onClick?: () => void;
 }
 
@@ -12,6 +13,7 @@ export const SourceItem: FC<SourceItemProps> = ({
   name,
   urlTemplate,
   previewUrl,
+  isSelected = false,
   onClick,
 }) => {
   const getPreviewUrl = () => {
@@ -25,9 +27,13 @@ export const SourceItem: FC<SourceItemProps> = ({
 
   return (
     <Box
-      bg="dark.7"
+      bg={isSelected ? "dark.4" : "dark.7"}
       onClick={onClick}
-      className="hover:bg-dark-6 hover:shadow-sm transition-all duration-150 cursor-pointer rounded-sm"
+      style={{
+        borderLeft: isSelected ? "3px solid var(--mantine-color-teal-6)" : "3px solid transparent",
+        boxShadow: isSelected ? "0 0 12px var(--color-teal-glow)" : "none",
+      }}
+      className="hover:bg-dark-6 hover:shadow-sm transition-all duration-150 cursor-pointer rounded-sm hover:scale-[1.03]"
     >
       <Image
         src={getPreviewUrl()}
@@ -39,7 +45,7 @@ export const SourceItem: FC<SourceItemProps> = ({
       <Box p={6}>
         <Text
           size="xs"
-          c="gray.2"
+          c={isSelected ? "teal.4" : "gray.2"}
           ta="center"
           fw={500}
           truncate

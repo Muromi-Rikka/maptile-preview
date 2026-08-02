@@ -1,3 +1,18 @@
 @import "tailwind-preset-mantine";
 
-@plugin "./iconify.ts"
+@plugin "./iconify.ts";
+
+:root {
+  --font-data: "Cascadia Code", Consolas, "Courier New", monospace;
+  --color-teal-glow: rgba(12, 166, 120, 0.25);
+}
+
+@keyframes copy-bounce {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
+
+.animate-copy-bounce {
+  animation: copy-bounce 0.2s ease-out;
+}
