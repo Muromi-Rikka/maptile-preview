@@ -1,7 +1,4 @@
-@import "tailwind-preset-mantine";
 @import "tw-animate-css";
-
-@plugin "./iconify.ts";
 
 @custom-variant dark (&:is(.dark *));
 

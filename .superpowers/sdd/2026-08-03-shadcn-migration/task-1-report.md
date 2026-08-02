@@ -3,13 +3,17 @@
 ## Status: DONE_WITH_CONCERNS
 
 ## Commits
+
 - `c3501f4` — chore: replace mantine dependencies with shadcn ecosystem
 
 ## Test Summary
+
 pnpm install completes successfully; lockfile updated with all new dependencies resolved.
 
 ## Changes Made
+
 **Removed:**
+
 - `@mantine/core` (runtime)
 - `@mantine/hooks` (runtime)
 - `postcss-preset-mantine` (dev)
@@ -19,6 +23,7 @@ pnpm install completes successfully; lockfile updated with all new dependencies 
 - `@iconify/tailwind` (dev)
 
 **Added:**
+
 - `@tanstack/react-query` ^5.101.4 (runtime)
 - `react-use` ^17.6.1 (runtime)
 - `lucide-react` ^1.28.0 (runtime)

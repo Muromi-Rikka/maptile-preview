@@ -12,7 +12,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Architecture
 
-Map tile source previewer with React 19 + Mantine 8 + MapLibre GL.
+Map tile source previewer with React 19 + shadcn/ui + MapLibre GL.
 
 **Data flow**: `public/sources.json` → `App.tsx` fetches via `useFetch` → groups by `title` → `SourceList` renders items → `MapView` displays selected tile source as raster layer.
 
@@ -26,8 +26,8 @@ Map tile source previewer with React 19 + Mantine 8 + MapLibre GL.
 
 ## Code Conventions
 
-- **UI library**: Mantine components for theming/layout (Card, Button, Text, Box, etc.)
-- **Styling**: Tailwind CSS 4 for layout/spacing, Mantine props for theme colors
+- **UI library**: shadcn/ui components (Card, Button, ScrollArea, etc.)
+- **Styling**: Tailwind CSS 4 for layout/spacing
 - **Locale**: Chinese UI text for user-facing strings
 - **ESLint**: @antfu/eslint-config with double quotes, semicolons, React/TypeScript enabled
 - **Imports**: Use `type` keyword for type-only imports (`import type { FC } from "react"`)
@@ -35,7 +35,7 @@ Map tile source previewer with React 19 + Mantine 8 + MapLibre GL.
 
 ## Build & Deploy
 
-- **Bundler**: Rsbuild (Rspack-based) with PostCSS pipeline (postcss-import → postcss-preset-mantine → postcss-simple-vars → tailwindcss)
+- **Bundler**: Rsbuild (Rspack-based) with @rsbuild/plugin-tailwindcss
 - **Docker**: Multi-stage build (Node 24 for build → nginx:alpine for runtime)
 - **CI/CD**: GitHub Actions publishes Docker image to GHCR on version tags (`v*`)
 

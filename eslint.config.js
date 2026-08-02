@@ -19,4 +19,7 @@ export default antfu(
       "pnpm/yaml-enforce-settings": "off",
     },
   },
+  {
+    ignores: [".superpowers/**"],
+  },
 );
