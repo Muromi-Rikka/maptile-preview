@@ -1,4 +1,5 @@
 import type { FC } from "react";
+import { Check } from "lucide-react";
 import { cn } from "../lib/utils";
 
 interface SourceItemProps {
@@ -29,27 +30,38 @@ export const SourceItem: FC<SourceItemProps> = ({
     <div
       onClick={onClick}
       className={cn(
-        "cursor-pointer rounded-sm transition-all duration-150 hover:scale-[1.03] hover:shadow-sm",
+        "relative cursor-pointer rounded-md overflow-hidden transition-all duration-200",
+        "border-2 active:scale-[0.97]",
         isSelected
-          ? "bg-accent shadow-[0_0_12px_var(--primary)]"
-          : "bg-card hover:bg-accent/50",
+          ? "border-primary shadow-md shadow-primary/20 ring-1 ring-primary/30"
+          : "border-border hover:border-muted-foreground/50 hover:shadow-sm",
       )}
     >
       <img
         src={getPreviewUrl()}
         alt={name}
-        className="h-[60px] w-full object-cover rounded-t-sm"
+        className="h-[60px] w-full object-cover"
       />
-      <div className="p-1.5">
+      <div
+        className={cn(
+          "px-1.5 py-1 transition-colors duration-200",
+          isSelected ? "bg-primary/10" : "bg-card",
+        )}
+      >
         <p
           className={cn(
             "text-xs font-medium text-center truncate leading-tight",
-            isSelected ? "text-primary" : "text-foreground",
+            isSelected ? "text-primary font-semibold" : "text-muted-foreground",
           )}
         >
           {name}
         </p>
       </div>
+      {isSelected && (
+        <div className="absolute top-1 right-1 bg-primary text-primary-foreground rounded-full p-0.5 shadow-sm">
+          <Check className="h-3 w-3" strokeWidth={3} />
+        </div>
+      )}
     </div>
   );
 };
