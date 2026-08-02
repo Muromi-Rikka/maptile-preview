@@ -31,8 +31,8 @@ export const SourceItem: FC<SourceItemProps> = ({
       className={cn(
         "cursor-pointer rounded-sm transition-all duration-150 hover:scale-[1.03] hover:shadow-sm",
         isSelected
-          ? "bg-accent border-l-3 border-primary shadow-[0_0_12px_var(--primary)]"
-          : "bg-card border-l-3 border-transparent hover:bg-accent/50",
+          ? "bg-accent shadow-[0_0_12px_var(--primary)]"
+          : "bg-card hover:bg-accent/50",
       )}
     >
       <img
