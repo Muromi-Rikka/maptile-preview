@@ -1,5 +1,5 @@
 import type { FC } from "react";
-import { Box, Image, Text } from "@mantine/core";
+import { cn } from "../lib/utils";
 
 interface SourceItemProps {
   name: string;
@@ -26,34 +26,30 @@ export const SourceItem: FC<SourceItemProps> = ({
   };
 
   return (
-    <Box
-      bg={isSelected ? "dark.4" : "dark.7"}
+    <div
       onClick={onClick}
-      style={{
-        borderLeft: isSelected ? "3px solid var(--mantine-color-teal-6)" : "3px solid transparent",
-        boxShadow: isSelected ? "0 0 12px var(--color-teal-glow)" : "none",
-      }}
-      className="hover:bg-dark-6 hover:shadow-sm transition-all duration-150 cursor-pointer rounded-sm hover:scale-[1.03]"
+      className={cn(
+        "cursor-pointer rounded-sm transition-all duration-150 hover:scale-[1.03] hover:shadow-sm",
+        isSelected
+          ? "bg-accent border-l-3 border-primary shadow-[0_0_12px_var(--primary)]"
+          : "bg-card border-l-3 border-transparent hover:bg-accent/50",
+      )}
     >
-      <Image
+      <img
         src={getPreviewUrl()}
         alt={name}
-        height={60}
-        fit="cover"
-        radius="xs"
+        className="h-[60px] w-full object-cover rounded-t-sm"
       />
-      <Box p={6}>
-        <Text
-          size="xs"
-          c={isSelected ? "teal.4" : "gray.2"}
-          ta="center"
-          fw={500}
-          truncate
-          lh={1.2}
+      <div className="p-1.5">
+        <p
+          className={cn(
+            "text-xs font-medium text-center truncate leading-tight",
+            isSelected ? "text-primary" : "text-foreground",
+          )}
         >
           {name}
-        </Text>
-      </Box>
-    </Box>
+        </p>
+      </div>
+    </div>
   );
 };
