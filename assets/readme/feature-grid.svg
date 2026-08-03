@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 440" width="1200" height="440">
+  <defs>
+    <linearGradient id="card" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e293b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0f172a;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="icon-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e293b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0f172a;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="440" fill="transparent"/>
+
+  <!-- Card 1: Multi-Coordinate -->
+  <g transform="translate(50, 20)">
+    <rect width="340" height="190" rx="12" fill="url(#card)" stroke="#334155" stroke-width="1"/>
+    <!-- Icon circle -->
+    <circle cx="50" cy="50" r="28" fill="url(#icon-bg)" stroke="#3b82f6" stroke-width="2"/>
+    <g transform="translate(50, 50)">
+      <line x1="0" y1="-12" x2="0" y2="12" stroke="#3b82f6" stroke-width="1.5"/>
+      <line x1="-12" y1="0" x2="12" y2="0" stroke="#3b82f6" stroke-width="1.5"/>
+      <circle cx="0" cy="0" r="4" fill="#3b82f6" fill-opacity="0.3"/>
+    </g>
+    <!-- Title -->
+    <text x="95" y="45" fill="white" font-family="system-ui, sans-serif" font-size="18" font-weight="600">Multi-Coordinate</text>
+    <text x="95" y="63" fill="#64748b" font-family="ui-monospace, monospace" font-size="11">WGS84 · GCJ02</text>
+    <!-- Divider -->
+    <line x1="25" y1="85" x2="315" y2="85" stroke="#334155" stroke-width="1"/>
+    <!-- Description -->
+    <text x="25" y="110" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="14">Support for WGS84 and GCJ02</text>
+    <text x="25" y="130" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="14">coordinate systems with seamless</text>
+    <text x="25" y="150" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="14">switching between standards.</text>
+  </g>
+
+  <!-- Card 2: Rich Sources -->
+  <g transform="translate(430, 20)">
+    <rect width="340" height="190" rx="12" fill="url(#card)" stroke="#334155" stroke-width="1"/>
+    <!-- Icon circle -->
+    <circle cx="50" cy="50" r="28" fill="url(#icon-bg)" stroke="#06b6d4" stroke-width="2"/>
+    <g transform="translate(50, 50)">
+      <rect x="-10" y="-10" width="20" height="20" rx="3" fill="none" stroke="#06b6d4" stroke-width="1.5"/>
+      <rect x="-4" y="-4" width="20" height="20" rx="3" fill="none" stroke="#06b6d4" stroke-width="1.5" opacity="0.6"/>
+      <circle cx="0" cy="0" r="4" fill="#06b6d4" fill-opacity="0.3"/>
+    </g>
+    <!-- Title -->
+    <text x="95" y="45" fill="white" font-family="system-ui, sans-serif" font-size="18" font-weight="600">Rich Sources</text>
+    <text x="95" y="63" fill="#64748b" font-family="ui-monospace, monospace" font-size="11">JSON config</text>
+    <!-- Divider -->
+    <line x1="25" y1="85" x2="315" y2="85" stroke="#334155" stroke-width="1"/>
+    <!-- Description -->
+    <text x="25" y="110" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="14">MapTiler, Tianditu, Autonavi</text>
+    <text x="25" y="130" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="14">and custom tile sources with</text>
+    <text x="25" y="150" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="14">easy configuration via JSON.</text>
+  </g>
+
+  <!-- Card 3: Live Preview -->
+  <g transform="translate(810, 20)">
+    <rect width="340" height="190" rx="12" fill="url(#card)" stroke="#334155" stroke-width="1"/>
+    <!-- Icon circle -->
+    <circle cx="50" cy="50" r="28" fill="url(#icon-bg)" stroke="#8b5cf6" stroke-width="2"/>
+    <g transform="translate(50, 50)">
+      <rect x="-14" y="-10" width="28" height="20" rx="3" fill="none" stroke="#8b5cf6" stroke-width="1.5"/>
+      <polygon points="-4,-4 -4,8 8,2" fill="#8b5cf6" fill-opacity="0.5"/>
+    </g>
+    <!-- Title -->
+    <text x="95" y="45" fill="white" font-family="system-ui, sans-serif" font-size="18" font-weight="600">Live Preview</text>
+    <text x="95" y="63" fill="#64748b" font-family="ui-monospace, monospace" font-size="11">Real-time</text>
+    <!-- Divider -->
+    <line x1="25" y1="85" x2="315" y2="85" stroke="#334155" stroke-width="1"/>
+    <!-- Description -->
+    <text x="25" y="110" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="14">Real-time map rendering with</text>
+    <text x="25" y="130" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="14">instant source switching and</text>
+    <text x="25" y="150" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="14">interactive zoom controls.</text>
+  </g>
+
+  <!-- Card 4: Modern Stack -->
+  <g transform="translate(50, 230)">
+    <rect width="340" height="190" rx="12" fill="url(#card)" stroke="#334155" stroke-width="1"/>
+    <!-- Icon circle -->
+    <circle cx="50" cy="50" r="28" fill="url(#icon-bg)" stroke="#f59e0b" stroke-width="2"/>
+    <g transform="translate(50, 50)">
+      <rect x="-8" y="-14" width="16" height="28" rx="2" fill="none" stroke="#f59e0b" stroke-width="1.5"/>
+      <line x1="-4" y1="-6" x2="4" y2="-6" stroke="#f59e0b" stroke-width="1" opacity="0.6"/>
+      <line x1="-4" y1="0" x2="2" y2="0" stroke="#f59e0b" stroke-width="1" opacity="0.6"/>
+      <line x1="-4" y1="6" x2="4" y2="6" stroke="#f59e0b" stroke-width="1" opacity="0.6"/>
+    </g>
+    <!-- Title -->
+    <text x="95" y="45" fill="white" font-family="system-ui, sans-serif" font-size="18" font-weight="600">Modern Stack</text>
+    <text x="95" y="63" fill="#64748b" font-family="ui-monospace, monospace" font-size="11">React · TS · Tailwind</text>
+    <!-- Divider -->
+    <line x1="25" y1="85" x2="315" y2="85" stroke="#334155" stroke-width="1"/>
+    <!-- Description -->
+    <text x="25" y="110" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="14">Built with React 19, TypeScript</text>
+    <text x="25" y="130" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="14">and Tailwind CSS for a robust</text>
+    <text x="25" y="150" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="14">and maintainable codebase.</text>
+  </g>
+
+  <!-- Card 5: URL Copy -->
+  <g transform="translate(430, 230)">
+    <rect width="340" height="190" rx="12" fill="url(#card)" stroke="#334155" stroke-width="1"/>
+    <!-- Icon circle -->
+    <circle cx="50" cy="50" r="28" fill="url(#icon-bg)" stroke="#10b981" stroke-width="2"/>
+    <g transform="translate(50, 50)">
+      <rect x="-10" y="-12" width="16" height="20" rx="2" fill="none" stroke="#10b981" stroke-width="1.5"/>
+      <rect x="-4" y="-16" width="16" height="20" rx="2" fill="#0f172a" stroke="#10b981" stroke-width="1.5"/>
+      <line x1="0" y1="-10" x2="8" y2="-10" stroke="#10b981" stroke-width="1" opacity="0.6"/>
+      <line x1="0" y1="-4" x2="6" y2="-4" stroke="#10b981" stroke-width="1" opacity="0.6"/>
+    </g>
+    <!-- Title -->
+    <text x="95" y="45" fill="white" font-family="system-ui, sans-serif" font-size="18" font-weight="600">URL Copy</text>
+    <text x="95" y="63" fill="#64748b" font-family="ui-monospace, monospace" font-size="11">Clipboard API</text>
+    <!-- Divider -->
+    <line x1="25" y1="85" x2="315" y2="85" stroke="#334155" stroke-width="1"/>
+    <!-- Description -->
+    <text x="25" y="110" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="14">One-click copy of tile URL</text>
+    <text x="25" y="130" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="14">templates for easy integration</text>
+    <text x="25" y="150" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="14">into your own projects.</text>
+  </g>
+
+  <!-- Card 6: Docker Ready -->
+  <g transform="translate(810, 230)">
+    <rect width="340" height="190" rx="12" fill="url(#card)" stroke="#334155" stroke-width="1"/>
+    <!-- Icon circle -->
+    <circle cx="50" cy="50" r="28" fill="url(#icon-bg)" stroke="#0ea5e9" stroke-width="2"/>
+    <g transform="translate(50, 50)">
+      <rect x="-14" y="-6" width="28" height="18" rx="3" fill="none" stroke="#0ea5e9" stroke-width="1.5"/>
+      <rect x="-8" y="-12" width="8" height="6" rx="1" fill="none" stroke="#0ea5e9" stroke-width="1"/>
+      <rect x="2" y="-12" width="8" height="6" rx="1" fill="none" stroke="#0ea5e9" stroke-width="1"/>
+      <line x1="-6" y1="4" x2="6" y2="4" stroke="#0ea5e9" stroke-width="1" opacity="0.5"/>
+    </g>
+    <!-- Title -->
+    <text x="95" y="45" fill="white" font-family="system-ui, sans-serif" font-size="18" font-weight="600">Docker Ready</text>
+    <text x="95" y="63" fill="#64748b" font-family="ui-monospace, monospace" font-size="11">nginx · Alpine</text>
+    <!-- Divider -->
+    <line x1="25" y1="85" x2="315" y2="85" stroke="#334155" stroke-width="1"/>
+    <!-- Description -->
+    <text x="25" y="110" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="14">Multi-stage Docker build with</text>
+    <text x="25" y="130" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="14">nginx for production-ready</text>
+    <text x="25" y="150" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="14">containerized deployment.</text>
+  </g>
+</svg>

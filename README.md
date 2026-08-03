@@ -1,45 +1,67 @@
-# 🗺️ Maptile Preview
+<p align="center">
+  <img src="./assets/readme/hero.svg" alt="Maptile Preview - Preview and compare map tile sources with ease" width="100%">
+</p>
 
-A modern, responsive web application for previewing and managing map tile sources with support for multiple coordinate systems and map providers.
+<p align="center">
+  <a href="#features">Features</a> •
+  <a href="#quick-start">Quick Start</a> •
+  <a href="#tech-stack">Tech Stack</a> •
+  <a href="#configuration">Configuration</a> •
+  <a href="#docker">Docker</a> •
+  <a href="#contributing">Contributing</a>
+</p>
 
-![Maptile Preview](./images/preview.png)
+<p align="center">
+  <img src="https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react" alt="React">
+  <img src="https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript" alt="TypeScript">
+  <img src="https://img.shields.io/badge/MapLibre-GL-0078D4?style=flat-square&logo=maplibre" alt="MapLibre">
+  <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="MIT License">
+  <img src="https://img.shields.io/github/last-commit/Muromi-Rikka/maptile-preview?style=flat-square" alt="Last Commit">
+</p>
 
-## ✨ Features
+---
 
-- **Multi-coordinate System Support**: WGS84 and GCJ02 coordinate systems
-- **Rich Map Sources**: Integration with multiple map providers (MapTiler, Tianditu, Autonavi)
-- **Interactive Map View**: Real-time map preview with tile source switching
-- **Source Management**: Organized display of available map sources by category
-- **URL Copy Functionality**: Easy copy of current tile URL template
-- **Responsive Design**: Modern UI with shadcn/ui components and Tailwind CSS
-- **Dark Theme**: Optimized dark interface for better visibility
-- **TypeScript Support**: Full type safety and modern React development
+**Maptile Preview** is a modern web application for previewing and comparing map tile sources. It supports multiple coordinate systems (WGS84, GCJ02) and integrates with popular map providers like MapTiler, Tianditu, and Autonavi.
 
-## 🚀 Quick Start
+## Features
+
+<p align="center">
+  <img src="./assets/readme/feature-grid.svg" alt="Features Overview" width="100%">
+</p>
+
+- **Multi-Coordinate System** — Seamlessly switch between WGS84 and GCJ02 coordinate standards
+- **Rich Map Sources** — Pre-configured for MapTiler, Tianditu, Autonavi, and custom tile servers
+- **Live Preview** — Real-time map rendering with instant source switching
+- **URL Copy** — One-click copy of tile URL templates for easy integration
+- **Modern Stack** — Built with React 19, TypeScript, and Tailwind CSS
+- **Docker Ready** — Multi-stage Docker build with nginx for production deployment
+
+## Quick Start
+
+<p align="center">
+  <img src="./assets/readme/section-quickstart.svg" alt="Quick Start" width="100%">
+</p>
 
 ### Prerequisites
 
-- Node.js 18+
-- pnpm 10.16.1+ (package manager)
-- Docker & Docker Compose (optional, for containerized deployment)
+- Node.js 24+
+- pnpm 11+ (package manager)
 
-### Local Development
+### Installation
 
-1. **Clone and Install**
+```bash
+# Clone the repository
+git clone https://github.com/Muromi-Rikka/maptile-preview.git
+cd maptile-preview
 
-   ```bash
-   git clone <repository-url>
-   cd maptile-preview
-   pnpm install
-   ```
+# Install dependencies
+pnpm install
 
-2. **Start Development Server**
-   ```bash
-   pnpm dev
-   ```
-3. **Open Application**
-   - Visit http://localhost:5555
-   - Map preview will load with default GCJ02 source
+# Start development server
+pnpm dev
+```
+
+Open [http://localhost:5555](http://localhost:5555) in your browser.
 
 ### Build for Production
 
@@ -51,19 +73,65 @@ pnpm build
 pnpm preview
 ```
 
-## 🐳 Docker Deployment
+## Tech Stack
 
-### Quick Deploy with Docker Compose
+<p align="center">
+  <img src="./assets/readme/section-tech.svg" alt="Tech Stack" width="100%">
+</p>
 
-```bash
-# Build and run container
-docker-compose up --build
+| Category | Technology |
+|----------|------------|
+| **Framework** | React 19 with TypeScript |
+| **Build Tool** | Rsbuild (Rspack-based) |
+| **UI Library** | shadcn/ui components |
+| **Styling** | Tailwind CSS 4 |
+| **Map Library** | react-map-gl + MapLibre GL |
+| **State Management** | TanStack Query |
+| **Code Quality** | ESLint with @antfu/eslint-config |
+| **Container** | Docker with nginx |
 
-# Access application
-# Open http://localhost
+## Configuration
+
+### Map Sources
+
+Edit `public/sources.json` to configure your tile sources:
+
+```json
+[
+  {
+    "title": "WGS84",
+    "name": "MapTiler Satellite",
+    "urlTemplate": "https://api.maptiler.com/tiles/satellite/{z}/{x}/{y}.jpg?key=YOUR_KEY"
+  },
+  {
+    "title": "GCJ02",
+    "name": "Autonavi Vector",
+    "urlTemplate": "https://webrd01.is.autonavi.com/appmaptile?lang=zh_cn&size=1&scale=1&style=8&x={x}&y={y}&z={z}"
+  }
+]
 ```
 
-### Manual Docker Build
+### Coordinate Systems
+
+The application supports two coordinate systems:
+
+| System | Description | Use Case |
+|--------|-------------|----------|
+| **WGS84** | Standard GPS coordinates | MapTiler, Tianditu, OpenStreetMap |
+| **GCJ02** | China-specific offset coordinates | Autonavi, Gaode Maps |
+
+## Docker
+
+### Quick Deploy
+
+```bash
+# Build and run with Docker Compose
+docker-compose up --build
+
+# Access at http://localhost
+```
+
+### Manual Build
 
 ```bash
 # Build image
@@ -73,193 +141,69 @@ docker build -t maptile-preview .
 docker run -p 80:80 --name maptile-preview maptile-preview
 ```
 
-📖 **Detailed Docker Guide**: See [DOCKER.md](./DOCKER.md) for comprehensive deployment instructions, configuration options, and production best practices.
+📖 See [DOCKER.md](./DOCKER.md) for detailed deployment instructions.
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 maptile-preview/
-├── src/                    # Source code
-│   ├── components/        # React components
-│   │   ├── MapView.tsx    # Interactive map component
-│   │   ├── SourceItem.tsx # Individual source item
-│   │   └── SourceList.tsx # Source list container
-│   ├── types/             # TypeScript type definitions
-│   ├── app.tsx            # Main application component
-│   ├── index.tsx          # Application entry point
-│   └── globals.css        # Global styles
-├── public/                # Static assets
-│   └── sources.json       # Map source configurations
-├── nginx.conf             # Nginx configuration for production
-├── docker-compose.yml     # Docker Compose configuration
-└── Dockerfile             # Multi-stage Docker build
+├── src/
+│   ├── components/
+│   │   ├── MapView.tsx      # Interactive map component
+│   │   ├── SourceItem.tsx   # Individual source selector
+│   │   └── SourceList.tsx   # Source list container
+│   ├── types/
+│   │   └── source.ts        # TypeScript type definitions
+│   ├── app.tsx              # Main application component
+│   └── index.tsx            # Application entry point
+├── public/
+│   └── sources.json         # Map source configurations
+├── assets/
+│   └── readme/              # README visual assets
+├── Dockerfile               # Multi-stage Docker build
+├── docker-compose.yml       # Docker Compose config
+└── nginx.conf               # Nginx configuration
 ```
 
-## 🔧 Configuration
+## Development
 
-### Map Sources Configuration
+### Available Scripts
 
-Edit `public/sources.json` to add or modify map sources:
-
-```json
-{
-  "title": "WGS84",
-  "name": "Custom Source",
-  "urlTemplate": "http://your-server/tiles?x={x}&y={y}&z={z}"
-}
-```
-
-### Build Configuration
-
-Modify `rsbuild.config.ts` for build customization:
-
-- Port configuration
-- PostCSS plugins
-- Tailwind CSS integration
-- Tailwind CSS theming
-
-### Environment Variables
-
-When using Docker:
-
-- `NGINX_HOST`: Hostname (default: localhost)
-- `NGINX_PORT`: Port number (default: 80)
-
-## 🎯 Key Components
-
-### MapView Component
-
-- Renders interactive map using react-map-gl and maplibre-gl
-- Supports dynamic tile source switching
-- Responsive map container with proper error handling
-
-### Source Management
-
-- Sources grouped by coordinate system (WGS84, GCJ02)
-- Real-time URL template display
-- One-click copy functionality
-- Organized card-based layout
-
-### UI/UX Features
-
-- Dark theme optimized for map viewing
-- Smooth animations and transitions
-- Responsive grid layout
-- Intuitive source selection interface
-
-## 🛠️ Technology Stack
-
-- **Frontend Framework**: React 19.1.1 with TypeScript
-- **Build Tool**: Rsbuild (Vite-based)
-- **UI Library**: shadcn/ui
-- **Styling**: Tailwind CSS 4.1.13 with PostCSS
-- **Map Library**: react-map-gl with maplibre-gl
-- **Package Manager**: pnpm with workspace support
-- **Container**: Multi-stage Docker build with nginx
-- **Code Quality**: ESLint with Antfu config, Husky, lint-staged
-
-## 🔍 Development Workflow
+| Command | Description |
+|---------|-------------|
+| `pnpm dev` | Start development server |
+| `pnpm build` | Build for production |
+| `pnpm preview` | Preview production build |
+| `pnpm lint` | Run ESLint |
+| `pnpm lint:fix` | Fix lint issues |
 
 ### Code Quality
 
-```bash
-# Run linting
-pnpm lint
+Pre-configured with Husky and lint-staged for automatic linting on commit.
 
-# Fix linting issues
-pnpm lint --fix
-```
+## Contributing
 
-### Git Hooks
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/my-feature`
+3. Make your changes
+4. Run linting: `pnpm lint`
+5. Commit your changes: `git commit -m 'feat: add my feature'`
+6. Push to the branch: `git push origin feature/my-feature`
+7. Submit a Pull Request
 
-Pre-configured with Husky and lint-staged:
-
-- Automatic linting on commit
-- Code formatting checks
-- Pre-commit quality checks
-
-## 📱 Browser Support
+## Browser Support
 
 - Chrome 88+
 - Firefox 87+
 - Safari 14+
 - Edge 88+
 
-## 🌐 API Integration
-
-The application expects a map tile service at `http://10.0.84.219:8008/maptile-cache/` with the following endpoint pattern:
-
-```
-GET /tiles?source={source-name}&x={x}&y={y}&z={z}
-```
-
-### Supported Sources
-
-**WGS84 Coordinate System:**
-
-- MapTiler Satellite
-- Satellite imagery
-- Dark theme maps
-- Tianditu vector and imagery layers
-- Tianditu label overlays
-
-**GCJ02 Coordinate System:**
-
-- Autonavi (Gaode) vector maps
-- Autonavi satellite imagery
-- Autonavi road networks
-- MapTiler Satellite (GCJ02)
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature-name`
-3. Make changes and test thoroughly
-4. Run linting: `pnpm lint`
-5. Commit changes: `git commit -m 'Add feature description'`
-6. Push to branch: `git push origin feature-name`
-7. Submit a Pull Request
-
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
 
-## 🆘 Troubleshooting
-
-### Common Issues
-
-**Build Failures:**
-
-- Ensure pnpm version matches `packageManager` field
-- Clear node_modules and reinstall: `rm -rf node_modules && pnpm install`
-
-**Map Not Loading:**
-
-- Check network connectivity to tile server
-- Verify sources.json configuration
-- Check browser console for CORS errors
-
-**Docker Issues:**
-
-- Ensure Docker daemon is running
-- Check port availability (default: 80)
-- Review container logs: `docker logs maptile-preview`
-
-### Performance Optimization
-
-- Production build includes nginx with gzip compression
-- Static asset caching configured (1 year for CSS/JS, 1 hour for JSON)
-- Multi-stage Docker build minimizes final image size
-- pnpm workspace for efficient dependency management
-
-## 📞 Support
-
-For issues and questions:
-
-- Check existing issues in the repository
-- Review troubleshooting section above
-- Create a new issue with detailed information
-
 ---
 
-**Made with ❤️ using React, TypeScript, and modern web technologies**
+<p align="center">
+  Made with ❤️ by <a href="https://github.com/Muromi-Rikka">Rikka</a>
+</p>
