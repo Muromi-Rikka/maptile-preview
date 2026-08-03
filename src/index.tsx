@@ -1,22 +1,20 @@
-import { createTheme, DEFAULT_THEME, MantineProvider, mergeMantineTheme } from "@mantine/core";
-import React from "react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import * as React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./app";
+import "./globals.css";
+
+const queryClient = new QueryClient();
 
 const rootEl = document.getElementById("root");
 
 if (rootEl) {
   const root = ReactDOM.createRoot(rootEl);
-  const theme = mergeMantineTheme(
-    DEFAULT_THEME,
-    createTheme({
-    }),
-  );
   root.render(
     <React.StrictMode>
-      <MantineProvider theme={theme}>
+      <QueryClientProvider client={queryClient}>
         <App />
-      </MantineProvider>
+      </QueryClientProvider>
     </React.StrictMode>,
   );
 }

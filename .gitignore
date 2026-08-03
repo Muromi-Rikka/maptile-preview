@@ -6,3 +6,5 @@ dist
 *.vsix
 .eslintcache
 public/_sources.json
+
+docs

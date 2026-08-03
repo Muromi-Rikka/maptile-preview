@@ -5,9 +5,14 @@
     "lib": ["DOM", "ES2020"],
     "useDefineForClassFields": true,
 
+    /* paths */
+    "baseUrl": ".",
     /* modules */
     "module": "ESNext",
     "moduleResolution": "Bundler",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
     "resolveJsonModule": true,
     "allowImportingTsExtensions": true,
 
@@ -20,5 +25,5 @@
     "isolatedModules": true,
     "skipLibCheck": true
   },
-  "include": ["src", "rsbuild.config.ts", "tailwind.config.ts"]
+  "include": ["src", "rsbuild.config.ts"]
 }

@@ -11,7 +11,7 @@ A modern, responsive web application for previewing and managing map tile source
 - **Interactive Map View**: Real-time map preview with tile source switching
 - **Source Management**: Organized display of available map sources by category
 - **URL Copy Functionality**: Easy copy of current tile URL template
-- **Responsive Design**: Modern UI with Mantine components and Tailwind CSS
+- **Responsive Design**: Modern UI with shadcn/ui components and Tailwind CSS
 - **Dark Theme**: Optimized dark interface for better visibility
 - **TypeScript Support**: Full type safety and modern React development
 
@@ -38,7 +38,7 @@ A modern, responsive web application for previewing and managing map tile source
    pnpm dev
    ```
 3. **Open Application**
-   - Visit http://localhost:5000
+   - Visit http://localhost:5555
    - Map preview will load with default GCJ02 source
 
 ### Build for Production
@@ -116,7 +116,7 @@ Modify `rsbuild.config.ts` for build customization:
 - Port configuration
 - PostCSS plugins
 - Tailwind CSS integration
-- Mantine theming
+- Tailwind CSS theming
 
 ### Environment Variables
 
@@ -151,7 +151,7 @@ When using Docker:
 
 - **Frontend Framework**: React 19.1.1 with TypeScript
 - **Build Tool**: Rsbuild (Vite-based)
-- **UI Library**: Mantine 8.3.1
+- **UI Library**: shadcn/ui
 - **Styling**: Tailwind CSS 4.1.13 with PostCSS
 - **Map Library**: react-map-gl with maplibre-gl
 - **Package Manager**: pnpm with workspace support
