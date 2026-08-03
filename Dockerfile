@@ -1,5 +1,5 @@
 # Base stage with Node.js
-FROM node:24.13.1-slim AS base
+FROM node:24.18.0-slim AS base
 # Enable Corepack for automatic pnpm installation
 RUN corepack enable
 # Set pnpm store location
@@ -18,7 +18,7 @@ COPY . .
 RUN pnpm build
 
 # Final production stage with nginx
-FROM nginx:1.29.5-alpine AS runtime
+FROM nginx:1.31.3-alpine AS runtime
 
 # Copy built application from build stage
 COPY --from=build /app/dist /usr/share/nginx/html
