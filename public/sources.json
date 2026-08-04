@@ -1,12 +1,117 @@
 [
   {
-    "title": "OpenStreetMap",
-    "name": "OpenStreetMap",
+    "title": "WGS84",
+    "name": "maptiler卫星hybrid",
     "urlTemplate": "http://localhost:15000/tiles?source=maptiler-satellite-hybrid&z={z}&x={x}&y={y}"
   },
   {
-    "title": "msh02",
-    "name": "msh02",
+    "title": "GCJ02",
+    "name": "Maptiler卫星hybrid",
     "urlTemplate": "http://localhost:15000/tiles?source=msh02&z={z}&x={x}&y={y}"
+  },
+  {
+    "title": "WGS84",
+    "name": "maptiler-base",
+    "urlTemplate": "http://localhost:15000/tiles?source=maptiler-base&z={z}&x={x}&y={y}"
+  },
+  {
+    "title": "WGS84",
+    "name": "天地图矢量底图",
+    "urlTemplate": "http://localhost:15000/tiles?source=tianditu-vec&z={z}&x={x}&y={y}"
+  },
+  {
+    "title": "WGS84",
+    "name": "天地图卫星影像",
+    "urlTemplate": "http://localhost:15000/tiles?source=tianditu-img&z={z}&x={x}&y={y}"
+  },
+  {
+    "title": "WGS84",
+    "name": "天地图影像注记",
+    "urlTemplate": "http://localhost:15000/tiles?source=tianditu-cia&z={z}&x={x}&y={y}"
+  },
+  {
+    "title": "GCJ02",
+    "name": "高德路网地图",
+    "urlTemplate": "http://localhost:15000/tiles?source=amap-road&z={z}&x={x}&y={y}"
+  },
+  {
+    "title": "GCJ02",
+    "name": "高德卫星影像",
+    "urlTemplate": "http://localhost:15000/tiles?source=amap-satellite&z={z}&x={x}&y={y}"
+  },
+  {
+    "title": "GCJ02",
+    "name": "高德卫星影像注记",
+    "urlTemplate": "http://localhost:15000/tiles?source=amap-satellite-label&z={z}&x={x}&y={y}"
+  },
+  {
+    "title": "GCJ02",
+    "name": "高德矢量底图",
+    "urlTemplate": "http://localhost:15000/tiles?source=amap-road-base&z={z}&x={x}&y={y}"
+  },
+  {
+    "title": "GCJ02",
+    "name": "高德英文路网",
+    "urlTemplate": "http://localhost:15000/tiles?source=amap-road-en&z={z}&x={x}&y={y}"
+  },
+  {
+    "title": "GCJ02",
+    "name": "高德暗色地图",
+    "urlTemplate": "http://localhost:15000/tiles?source=amap-dark&z={z}&x={x}&y={y}"
+  },
+  {
+    "title": "WGS84",
+    "name": "CartoDB Positron",
+    "urlTemplate": "http://localhost:15000/tiles?source=cartodb-positron&z={z}&x={x}&y={y}"
+  },
+  {
+    "title": "WGS84",
+    "name": "CartoDB Dark Matter",
+    "urlTemplate": "http://localhost:15000/tiles?source=cartodb-dark&z={z}&x={x}&y={y}"
+  },
+  {
+    "title": "WGS84",
+    "name": "Esri World Imagery",
+    "urlTemplate": "http://localhost:15000/tiles?source=esri-imagery&z={z}&x={x}&y={y}"
+  },
+  {
+    "title": "WGS84",
+    "name": "Esri World Street Map",
+    "urlTemplate": "http://localhost:15000/tiles?source=esri-streets&z={z}&x={x}&y={y}"
+  },
+  {
+    "title": "WGS84",
+    "name": "Esri World Topographic",
+    "urlTemplate": "http://localhost:15000/tiles?source=esri-topo&z={z}&x={x}&y={y}"
+  },
+  {
+    "title": "WGS84",
+    "name": "Esri World Physical",
+    "urlTemplate": "http://localhost:15000/tiles?source=esri-physical&z={z}&x={x}&y={y}"
+  },
+  {
+    "title": "WGS84",
+    "name": "Esri World Shaded Relief",
+    "urlTemplate": "http://localhost:15000/tiles?source=esri-shaded-relief&z={z}&x={x}&y={y}"
+  },
+  {
+    "title": "WGS84",
+    "name": "Esri World Terrain Base",
+    "urlTemplate": "http://localhost:15000/tiles?source=esri-terrain&z={z}&x={x}&y={y}"
+  },
+  {
+    "title": "WGS84",
+    "name": "Esri National Geographic",
+    "urlTemplate": "http://localhost:15000/tiles?source=esri-natgeo&z={z}&x={x}&y={y}"
+  },
+  {
+    "title": "WGS84",
+    "name": "Esri World Ocean Base",
+    "urlTemplate": "http://localhost:15000/tiles?source=esri-ocean&z={z}&x={x}&y={y}"
+  },
+  {
+    "title": "WGS84",
+    "name": "OpenTopoMap",
+    "urlTemplate": "http://localhost:15000/tiles?source=opentopomap&z={z}&x={x}&y={y}"
   }
 ]

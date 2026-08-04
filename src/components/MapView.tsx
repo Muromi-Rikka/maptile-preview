@@ -18,7 +18,7 @@ export const MapView: FC<MapViewProps> = ({ className, sourceUrl }) => {
           initialViewState={{
             longitude: 121.4737,
             latitude: 31.2304,
-            zoom: 10,
+            zoom: 8,
           }}
           style={{ width: "100%", height: "100%" }}
           mapStyle="https://demotiles.maplibre.org/style.json"

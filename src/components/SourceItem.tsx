@@ -21,9 +21,9 @@ export const SourceItem: FC<SourceItemProps> = ({
     if (previewUrl)
       return previewUrl;
     return urlTemplate
-      .replace("{x}", "13662")
-      .replace("{y}", "6749")
-      .replace("{z}", "14");
+      .replace("{x}", "213")
+      .replace("{y}", "107")
+      .replace("{z}", "8");
   };
 
   return (
