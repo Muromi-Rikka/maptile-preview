@@ -12,7 +12,10 @@ import { cn } from "./lib/utils";
 
 function App() {
   const { data: sources } = useQuery<SourceItemData[]>({
-    queryFn: () => fetch("/sources.json").then(res => res.json()),
+    queryFn: async () => {
+      const response = await fetch("/sources.json");
+      return response.json();
+    },
     queryKey: ["sources"],
   });
   const [currentSourceUrl, setCurrentSourceUrl] = useState<string>("");
@@ -23,7 +26,7 @@ function App() {
     if (!sources)
       return {};
     return sources.reduce((accumulator, source) => {
-      if (!accumulator[source.title]) {
+      if (!Object.hasOwn(accumulator, source.title)) {
         accumulator[source.title] = [];
       }
       accumulator[source.title].push(source);
@@ -32,13 +35,15 @@ function App() {
   }, [sources]);
 
   useEffect(() => {
-    if (!(sources && sources.length > 0) || currentSourceUrl) {
+    if (currentSourceUrl || !(sources && sources.length > 0)) {
       return;
     }
 
     const gcj02Source = sources.find(s => s.title === "GCJ02");
     const defaultSource = gcj02Source || sources[0];
+    // eslint-disable-next-line react/set-state-in-effect
     setCurrentSourceUrl(defaultSource.urlTemplate);
+    // eslint-disable-next-line react/set-state-in-effect
     setSelectedSourceName(defaultSource.name);
   }, [currentSourceUrl, sources]);
 
