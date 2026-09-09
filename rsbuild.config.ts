@@ -3,6 +3,10 @@ import { pluginReact } from "@rsbuild/plugin-react";
 import tailwindcss from "@tailwindcss/postcss";
 
 export default defineConfig({
+  html: {
+    template: "./index.html",
+  },
+  plugins: [pluginReact()],
   resolve: {
     alias: {
       "@": "./src",
@@ -17,9 +21,5 @@ export default defineConfig({
         plugins: [tailwindcss],
       },
     },
-  },
-  plugins: [pluginReact()],
-  html: {
-    template: "./index.html",
   },
 });

@@ -1,7 +1,7 @@
-import type { SourceItemData } from "./types/source";
 import { useQuery } from "@tanstack/react-query";
 import { Check, Copy } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
+import type { SourceItemData } from "./types/source";
 import { MapView } from "./components/MapView";
 import { SourceList } from "./components/SourceList";
 import { Button } from "./components/ui/button";
@@ -12,8 +12,8 @@ import { cn } from "./lib/utils";
 
 function App() {
   const { data: sources } = useQuery<SourceItemData[]>({
-    queryKey: ["sources"],
     queryFn: () => fetch("/sources.json").then(res => res.json()),
+    queryKey: ["sources"],
   });
   const [currentSourceUrl, setCurrentSourceUrl] = useState<string>("");
   const [selectedSourceName, setSelectedSourceName] = useState<string>("");
@@ -22,24 +22,24 @@ function App() {
   const groupedSources = useMemo(() => {
     if (!sources)
       return {};
-    return sources.reduce((acc, source) => {
-      if (!acc[source.title]) {
-        acc[source.title] = [];
+    return sources.reduce((accumulator, source) => {
+      if (!accumulator[source.title]) {
+        accumulator[source.title] = [];
       }
-      acc[source.title].push(source);
-      return acc;
+      accumulator[source.title].push(source);
+      return accumulator;
     }, {} as Record<string, SourceItemData[]>);
   }, [sources]);
 
   useEffect(() => {
-    if (sources && sources.length > 0 && !currentSourceUrl) {
-      const gcj02Source = sources.find(s => s.title === "GCJ02");
-      const defaultSource = gcj02Source || sources[0];
-      // eslint-disable-next-line react-hooks-extra/no-direct-set-state-in-use-effect
-      setCurrentSourceUrl(defaultSource.urlTemplate);
-      // eslint-disable-next-line react-hooks-extra/no-direct-set-state-in-use-effect
-      setSelectedSourceName(defaultSource.name);
+    if (!(sources && sources.length > 0) || currentSourceUrl) {
+      return;
     }
+
+    const gcj02Source = sources.find(s => s.title === "GCJ02");
+    const defaultSource = gcj02Source || sources[0];
+    setCurrentSourceUrl(defaultSource.urlTemplate);
+    setSelectedSourceName(defaultSource.name);
   }, [currentSourceUrl, sources]);
 
   const handleSourceSelect = (source: SourceItemData) => {
@@ -56,10 +56,10 @@ function App() {
               <div className="flex items-center justify-between">
                 <span className="text-xs font-medium text-primary">当前底图URL:</span>
                 <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => clipboard.copy(currentSourceUrl)}
                   className="h-6 px-2 text-xs"
+                  onClick={() => clipboard.copy(currentSourceUrl)}
+                  size="sm"
+                  variant="ghost"
                 >
                   {clipboard.copied
                     ? <Check className="h-3 w-3 text-green-400 animate-copy-bounce" />
@@ -84,15 +84,15 @@ function App() {
         <ScrollArea className="h-full">
           <div className="flex flex-col gap-3 pr-2">
             {Object.entries(groupedSources).map(([title, items], index) => (
-              <Card key={title} className={cn(index % 2 === 0 ? "bg-muted/50" : "bg-muted/30")}>
+              <Card className={cn(index % 2 === 0 ? "bg-muted/50" : "bg-muted/30")} key={title}>
                 <CardHeader className="p-3 pb-2">
                   <CardTitle className="text-sm">{title}</CardTitle>
                 </CardHeader>
                 <CardContent className="p-3 pt-0">
                   <SourceList
-                    sources={items}
-                    selectedName={selectedSourceName}
                     onSourceSelect={handleSourceSelect}
+                    selectedName={selectedSourceName}
+                    sources={items}
                   />
                 </CardContent>
               </Card>

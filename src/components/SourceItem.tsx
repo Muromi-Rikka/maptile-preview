@@ -2,20 +2,20 @@ import type { FC } from "react";
 import { Check } from "lucide-react";
 import { cn } from "../lib/utils";
 
-interface SourceItemProps {
-  name: string;
-  urlTemplate: string;
-  previewUrl?: string;
+interface SourceItemProperties {
   isSelected?: boolean;
+  name: string;
   onClick?: () => void;
+  previewUrl?: string;
+  urlTemplate: string;
 }
 
-export const SourceItem: FC<SourceItemProps> = ({
-  name,
-  urlTemplate,
-  previewUrl,
+export const SourceItem: FC<SourceItemProperties> = ({
   isSelected = false,
+  name,
   onClick,
+  previewUrl,
+  urlTemplate,
 }) => {
   const getPreviewUrl = () => {
     if (previewUrl)
@@ -28,7 +28,6 @@ export const SourceItem: FC<SourceItemProps> = ({
 
   return (
     <div
-      onClick={onClick}
       className={cn(
         "relative cursor-pointer rounded-md overflow-hidden transition-all duration-200",
         "border-2 active:scale-[0.97]",
@@ -36,11 +35,12 @@ export const SourceItem: FC<SourceItemProps> = ({
           ? "border-primary shadow-md shadow-primary/20 ring-1 ring-primary/30"
           : "border-border hover:border-muted-foreground/50 hover:shadow-sm",
       )}
+      onClick={onClick}
     >
       <img
-        src={getPreviewUrl()}
         alt={name}
         className="h-[60px] w-full object-cover"
+        src={getPreviewUrl()}
       />
       <div
         className={cn(
