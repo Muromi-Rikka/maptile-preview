@@ -18,9 +18,7 @@ export const SourceItem: FC<SourceItemProperties> = ({
   urlTemplate,
 }) => {
   const getPreviewUrl = () => {
-    if (previewUrl)
-      return previewUrl;
-    return urlTemplate
+    return previewUrl || urlTemplate
       .replace("{x}", "213")
       .replace("{y}", "107")
       .replace("{z}", "8");

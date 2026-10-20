@@ -41,9 +41,9 @@ function App() {
 
     const gcj02Source = sources.find(s => s.title === "GCJ02");
     const defaultSource = gcj02Source || sources[0];
-    // eslint-disable-next-line react/set-state-in-effect
+
     setCurrentSourceUrl(defaultSource.urlTemplate);
-    // eslint-disable-next-line react/set-state-in-effect
+
     setSelectedSourceName(defaultSource.name);
   }, [currentSourceUrl, sources]);
 
