@@ -1,4 +1,13 @@
+
 minimumReleaseAge: 0
+minimumReleaseAgeExcludePrune: true
+
+trustPolicy: no-downgrade
+trustPolicyExclude:
+  - semver
+
+shellEmulator: true
 
 allowBuilds:
   core-js: true
+
