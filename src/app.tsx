@@ -89,7 +89,12 @@ function App() {
         <ScrollArea className="h-full">
           <div className="flex flex-col gap-3 pr-2">
             {Object.entries(groupedSources).map(([title, items], index) => (
-              <Card className={cn(index % 2 === 0 ? "bg-muted/50" : "bg-muted/30")} key={title}>
+              <Card
+                className={cn(index % 2 === 0
+                  ? "bg-muted/50"
+                  : "bg-muted/30")}
+                key={title}
+              >
                 <CardHeader className="p-3 pb-2">
                   <CardTitle className="text-sm">{title}</CardTitle>
                 </CardHeader>

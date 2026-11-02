@@ -6,7 +6,9 @@ export default defineConfig({
   html: {
     template: "./index.html",
   },
-  plugins: [pluginReact()],
+  plugins: [
+    pluginReact(),
+  ],
   resolve: {
     alias: {
       "@": "./src",
