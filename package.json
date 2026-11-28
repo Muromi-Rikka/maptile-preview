@@ -80,7 +80,7 @@
     "eslint": "^10.16.0",
     "husky": "^9.1.7",
     "jiti": "^2.7.0",
-    "lint-staged": "^17.6.2",
+    "lint-staged": "^17.6.3",
     "tailwindcss": "^4.3.5",
     "typescript": "~6.0.3"
   }
